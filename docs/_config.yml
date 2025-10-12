@@ -28,6 +28,8 @@ domain: inversity.github.io
 url: "https://inversity.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 # twitter_username: jekyllrb
 # github_username:  jekyll
+show_downloads: false
+show_github_link: false
 
 # Build settings
 remote_theme: pages-themes/midnight@v0.2.0
