@@ -1,6 +1,7 @@
 ---
 layout: default
 ---
+[Minecraft Bug Report](./report.md).
 
 Text can be **bold**, _italic_, or ~~strikethrough~~.
 
