@@ -1,0 +1,23 @@
+- name: video
+  display: Videos
+  icon: "[VIDEO]"
+
+- name: article
+  display: Articles
+  icon: "[ARTICLE]"
+
+- name: image
+  display: Images
+  icon: "[IMAGE]"
+
+- name: music
+  display: Music
+  icon: "[MUSIC]"
+
+- name: tool
+  display: Tools
+  icon: "[TOOL]"
+
+- name: other
+  display: Other
+  icon: "[OTHER]"
