@@ -2,11 +2,11 @@
 layout: default
 ---
 
-[Cool Stuff I've Found](./stuff) ✨
+[Cool Stuff I've Found](./stuff)
 
 ---
 
-[Me Right Now](./now) ✨
+[Me Right Now](./now)
 
 ---
 
