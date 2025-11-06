@@ -5,6 +5,7 @@ category: video
 date: 2025-11-05
 embed_url: "https://www.youtube.com/embed/dQw4w9WgXcQ"
 tags: [example, music]
+nav_order: 1
 ---
 
 This is an example video item. Replace the `embed_url` with any YouTube video embed link.

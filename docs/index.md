@@ -2,11 +2,19 @@
 layout: default
 ---
 
+[Cool Stuff I've Found](./stuff) ✨
+
+---
+
+[Me Right Now](.now.md) ✨
+
+---
+
 [Silk CUSTOM PDF 1](./assets/pdf/silk-us.pdf)
 
 [Silk CUSTOM PDF 2](./assets/pdf/silk-short.pdf)
 
-[Cool Stuff I've Found](./stuff) ✨
+
 
 Text can be **bold**, _italic_, or ~~strikethrough~~.
 

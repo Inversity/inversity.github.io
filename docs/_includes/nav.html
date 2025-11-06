@@ -1,0 +1,9 @@
+<nav style="margin-bottom: 2em;">
+  {% for page in site.pages %}
+    {% if page.title and page.nav_order %}
+      <a href="{{ page.url }}" style="margin-right: 1em;">
+        {{ page.title }}
+      </a>
+    {% endif %}
+  {% endfor %}
+</nav>

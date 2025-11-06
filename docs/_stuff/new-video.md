@@ -6,6 +6,7 @@ date: 2025-11-05
 embed_url: "https://www.youtube.com/embed/ZhIsAZO5gl0"
 tags: [example, music, KISS]
 test_variable: "her"
+nav_order: 2
 ---
 This is an example of a NEW video item.
 
