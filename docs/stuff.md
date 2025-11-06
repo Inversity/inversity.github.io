@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Cool Stuff
+nav_order: 1
 ---
 
 # Cool Stuff I've Found

@@ -14,7 +14,9 @@ layout: default
 
 [Silk CUSTOM PDF 2](./assets/pdf/silk-short.pdf)
 
+---
 
+[About](./about)
 
 Text can be **bold**, _italic_, or ~~strikethrough~~.
 

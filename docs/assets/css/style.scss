@@ -2,3 +2,173 @@
 ---
 
 @import "{{ site.theme }}";
+
+/* ========================================
+   CUSTOM BLACK/RED GRADIENT THEME
+   ======================================== */
+
+/* Main background - dark with subtle red gradient */
+body {
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a0505 50%, #0a0a0a 100%);
+  background-attachment: fixed;
+  color: #f0f0f0;
+}
+
+.wrapper {
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+}
+
+section {
+  background: rgba(10, 10, 10, 0.8);
+  border: 1px solid rgba(139, 0, 0, 0.3);
+  box-shadow: 0 0 20px rgba(139, 0, 0, 0.2);
+}
+
+/* Top header bar */
+#header {
+  background: linear-gradient(180deg, #0a0a0a 0%, #1a0000 100%);
+  border-bottom: 1px solid rgba(139, 0, 0, 0.5);
+  box-shadow: 0 2px 15px rgba(139, 0, 0, 0.3);
+}
+
+/* Headers */
+h1, h2, h3, h4, h5, h6 {
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(139, 0, 0, 0.5);
+}
+
+#title {
+  text-align: center;
+}
+
+#title h1 {
+  color: #ff3333;
+  text-shadow: 0 0 20px rgba(255, 0, 0, 0.6);
+}
+
+/* Links - red accent */
+a {
+  color: #ff4444;
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  color: #ff0000;
+  text-shadow: 0 0 8px rgba(255, 0, 0, 0.6);
+}
+
+/* Horizontal rules with red glow */
+hr {
+  border: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #8b0000, transparent);
+  box-shadow: 0 0 10px rgba(139, 0, 0, 0.5);
+}
+
+/* Code blocks */
+pre, code {
+  background: #0d0d0d;
+  border: 1px solid rgba(139, 0, 0, 0.3);
+  color: #f0f0f0;
+}
+
+/* Blockquotes */
+blockquote {
+  border-left: 3px solid #8b0000;
+  background: rgba(139, 0, 0, 0.1);
+  color: #e0e0e0;
+}
+
+/* Tables */
+table {
+  border-collapse: collapse;
+}
+
+table th {
+  background: linear-gradient(180deg, #1a0000, #0d0000);
+  color: #ff4444;
+  border: 1px solid rgba(139, 0, 0, 0.5);
+}
+
+table td {
+  border: 1px solid rgba(139, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.5);
+}
+
+table tr:hover {
+  background: rgba(139, 0, 0, 0.1);
+}
+
+/* Navigation bar */
+#title nav {
+  background: rgba(139, 0, 0, 0.1);
+  border: 1px solid rgba(139, 0, 0, 0.3);
+  border-radius: 8px;
+  padding: 0.75em 1em;
+  box-shadow: 0 0 15px rgba(139, 0, 0, 0.2);
+  display: inline-block;
+  margin: 0 auto;
+}
+
+nav a {
+  color: #ff6666;
+  padding: 0.5em 1em;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+nav a:hover {
+  background: rgba(139, 0, 0, 0.4);
+  color: #ff3333;
+  box-shadow: 0 0 10px rgba(139, 0, 0, 0.5);
+  transform: translateY(-2px);
+}
+
+/* Stuff item styling */
+.stuff-item {
+  border-left: 3px solid #8b0000;
+  padding-left: 1em;
+  margin-bottom: 2em;
+  background: rgba(139, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.stuff-item:hover {
+  border-left-color: #ff0000;
+  background: rgba(139, 0, 0, 0.1);
+  box-shadow: -3px 0 15px rgba(139, 0, 0, 0.3);
+}
+
+/* Tags */
+span[style*="background: #333"] {
+  background: rgba(139, 0, 0, 0.3) !important;
+  border: 1px solid rgba(139, 0, 0, 0.5);
+}
+
+/* Footer */
+#footer {
+  background: rgba(0, 0, 0, 0.8);
+  border-top: 1px solid rgba(139, 0, 0, 0.3);
+  color: #888;
+}
+
+#footer a {
+  color: #ff5555;
+}
+
+/* Input/textarea (if you add forms later) */
+input, textarea {
+  background: #0d0d0d;
+  border: 1px solid rgba(139, 0, 0, 0.5);
+  color: #f0f0f0;
+}
+
+input:focus, textarea:focus {
+  border-color: #8b0000;
+  box-shadow: 0 0 10px rgba(139, 0, 0, 0.5);
+  outline: none;
+}

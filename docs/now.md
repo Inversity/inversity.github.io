@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Now
+nav_order: 2
 ---
 
 # What I'm Up To Now

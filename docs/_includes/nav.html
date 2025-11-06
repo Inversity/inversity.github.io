@@ -1,7 +1,8 @@
-<nav style="margin-bottom: 2em;">
-  {% for page in site.pages %}
+<nav style="text-align: center; margin-bottom: 1.5em; margin-top: 1em;">
+  {% assign sorted_pages = site.pages | where_exp: "page", "page.nav_order" | sort: "nav_order" %}
+  {% for page in sorted_pages %}
     {% if page.title and page.nav_order %}
-      <a href="{{ page.url }}" style="margin-right: 1em;">
+      <a href="{{ page.url }}" style="margin: 0 0.75em; display: inline-block;">
         {{ page.title }}
       </a>
     {% endif %}
