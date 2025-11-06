@@ -6,7 +6,7 @@ layout: default
 
 ---
 
-[Me Right Now](.now.md) ✨
+[Me Right Now](./now) ✨
 
 ---
 
