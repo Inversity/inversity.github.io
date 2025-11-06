@@ -1,10 +1,11 @@
 ---
-layout: stuff
+layout: test-layout
 title: "New Video Titlely Doo"
 category: video
 date: 2025-11-05
 embed_url: "https://www.youtube.com/embed/ZhIsAZO5gl0"
 tags: [example, music, KISS]
+test_variable: "her"
 ---
 This is an example of a NEW video item.
 
