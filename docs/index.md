@@ -2,6 +2,6 @@
 layout: default
 ---
 
-<h1 style="text-align: center;">
+<!-- <h1 style="text-align: center;">
   <a href="/her/">them</a>
-</h1>
+</h1> -->
