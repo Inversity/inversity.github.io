@@ -5,10 +5,13 @@ A Cloudflare Worker that serves a public gallery for ShareX uploads stored in an
 ## Features
 
 - 🎨 **Dark Midnight Theme** - Matches the inversity.dev Jekyll site aesthetic
-- 🖼️ **Masonry Gallery Layout** - Responsive grid for images
-- 📊 **File Management** - Displays both images and other file types
+- 🖼️ **Masonry Gallery Layout** - Responsive grid for images and videos
+- 🎬 **Video Player** - Inline playable videos (MP4, MOV, AVI, WebM, MKV)
+- 📊 **File Management** - Displays images, videos, and other file types
 - 📋 **Copy URLs** - One-click clipboard copying for file URLs
+- 🗑️ **Delete Files** - Remove files directly from the gallery with confirmation
 - 📱 **Mobile Responsive** - Works beautifully on all devices
+- 🔒 **Zero Trust Authentication** - Protected by Cloudflare Access
 - ⚡ **Fast** - Powered by Cloudflare Workers at the edge
 
 ## Infrastructure
@@ -67,7 +70,12 @@ The Worker is configured in `wrangler.toml`:
 ## How It Works
 
 1. **Root Path (`/`)**: Lists all objects in the R2 bucket and renders a gallery HTML page
+   - Separates files into Images, Videos, and Other Files categories
+   - Shows stats for each category
 2. **File Paths (`/<filename>`)**: Serves the actual file from R2 with appropriate caching headers
+3. **DELETE Requests**: Removes files from the R2 bucket with confirmation
+   - Each file has a delete button with confirmation dialog
+   - Page auto-refreshes after successful deletion
 
 ## Styling
 
@@ -82,15 +90,21 @@ The gallery matches the dark midnight theme from the main inversity.dev site:
 ### Images (Masonry Grid)
 - JPG/JPEG
 - PNG
-- GIF
+- GIF (animated)
 - WebP
 - BMP
 - SVG
 
+### Videos (Masonry Grid with Player)
+- MP4
+- MOV
+- AVI
+- WebM
+- MKV
+
 ### Other Files (List View)
 - Documents (PDF, DOC, TXT)
 - Archives (ZIP, RAR, 7Z)
-- Videos (MP4, MOV, AVI)
 - Audio (MP3, WAV)
 - And more...
 

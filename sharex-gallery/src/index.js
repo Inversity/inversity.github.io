@@ -7,10 +7,16 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
     const path = url.pathname;
+    const method = request.method;
 
     // Handle root path - show gallery
     if (path === '/' || path === '') {
       return await handleGallery(env.BUCKET);
+    }
+
+    // Handle DELETE requests
+    if (method === 'DELETE') {
+      return await handleDelete(env.BUCKET, path);
     }
 
     // Handle file requests - serve from R2
@@ -30,17 +36,25 @@ async function handleGallery(bucket) {
     // Sort by uploaded date, newest first
     objects.sort((a, b) => b.uploaded.getTime() - a.uploaded.getTime());
 
-    // Separate images from other files
+    // Categorize files by type
     const imageExtensions = ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.bmp', '.svg'];
+    const videoExtensions = ['.mp4', '.mov', '.avi', '.webm', '.mkv'];
+
     const images = objects.filter(obj =>
       imageExtensions.some(ext => obj.key.toLowerCase().endsWith(ext))
     );
+
+    const videos = objects.filter(obj =>
+      videoExtensions.some(ext => obj.key.toLowerCase().endsWith(ext))
+    );
+
     const otherFiles = objects.filter(obj =>
-      !imageExtensions.some(ext => obj.key.toLowerCase().endsWith(ext))
+      !imageExtensions.some(ext => obj.key.toLowerCase().endsWith(ext)) &&
+      !videoExtensions.some(ext => obj.key.toLowerCase().endsWith(ext))
     );
 
     // Generate HTML
-    const html = generateGalleryHTML(images, otherFiles);
+    const html = generateGalleryHTML(images, videos, otherFiles);
 
     return new Response(html, {
       headers: {
@@ -85,9 +99,31 @@ async function handleFile(bucket, path) {
 }
 
 /**
+ * Deletes a file from R2 bucket
+ */
+async function handleDelete(bucket, path) {
+  // Remove leading slash
+  const key = path.substring(1);
+
+  try {
+    await bucket.delete(key);
+
+    return new Response(JSON.stringify({ success: true, message: 'File deleted' }), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' }
+    });
+  } catch (error) {
+    return new Response(JSON.stringify({ success: false, message: error.message }), {
+      status: 500,
+      headers: { 'Content-Type': 'application/json' }
+    });
+  }
+}
+
+/**
  * Generates the gallery HTML with midnight theme styling
  */
-function generateGalleryHTML(images, otherFiles) {
+function generateGalleryHTML(images, videos, otherFiles) {
   const imageCards = images.map(obj => {
     const url = `/${obj.key}`;
     const date = new Date(obj.uploaded).toLocaleDateString();
@@ -101,9 +137,41 @@ function generateGalleryHTML(images, otherFiles) {
         <div class="item-info">
           <div class="item-name" title="${obj.key}">${obj.key}</div>
           <div class="item-meta">${date} • ${size}</div>
-          <button class="copy-btn" onclick="copyToClipboard('https://sharex.inversity.dev${url}')">
-            📋 Copy URL
-          </button>
+          <div class="item-actions">
+            <button class="copy-btn" onclick="copyToClipboard('https://sharex.inversity.dev${url}')">
+              📋 Copy URL
+            </button>
+            <button class="delete-btn" onclick="deleteFile('${url}', '${obj.key}')">
+              🗑️ Delete
+            </button>
+          </div>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  const videoCards = videos.map(obj => {
+    const url = `/${obj.key}`;
+    const date = new Date(obj.uploaded).toLocaleDateString();
+    const size = formatFileSize(obj.size);
+
+    return `
+      <div class="masonry-item">
+        <video controls preload="metadata" onclick="this.paused ? this.play() : this.pause()">
+          <source src="${url}" type="video/${obj.key.split('.').pop()}">
+          Your browser does not support the video tag.
+        </video>
+        <div class="item-info">
+          <div class="item-name" title="${obj.key}">${obj.key}</div>
+          <div class="item-meta">${date} • ${size}</div>
+          <div class="item-actions">
+            <button class="copy-btn" onclick="copyToClipboard('https://sharex.inversity.dev${url}')">
+              📋 Copy URL
+            </button>
+            <button class="delete-btn" onclick="deleteFile('${url}', '${obj.key}')">
+              🗑️ Delete
+            </button>
+          </div>
         </div>
       </div>
     `;
@@ -124,9 +192,14 @@ function generateGalleryHTML(images, otherFiles) {
             <div class="file-meta">${date} • ${size}</div>
           </div>
         </a>
-        <button class="copy-btn" onclick="copyToClipboard('https://sharex.inversity.dev${url}')">
-          📋
-        </button>
+        <div class="file-actions">
+          <button class="copy-btn" onclick="copyToClipboard('https://sharex.inversity.dev${url}')">
+            📋
+          </button>
+          <button class="delete-btn" onclick="deleteFile('${url}', '${obj.key}')">
+            🗑️
+          </button>
+        </div>
       </div>
     `;
   }).join('');
@@ -227,7 +300,8 @@ function generateGalleryHTML(images, otherFiles) {
       transform: translateY(-5px);
     }
 
-    .masonry-item img {
+    .masonry-item img,
+    .masonry-item video {
       width: 100%;
       display: block;
       border-radius: 8px 8px 0 0;
@@ -236,7 +310,8 @@ function generateGalleryHTML(images, otherFiles) {
       transition: all 0.4s ease;
     }
 
-    .masonry-item:hover img {
+    .masonry-item:hover img,
+    .masonry-item:hover video {
       box-shadow: 0 8px 30px rgba(139, 0, 0, 0.7);
     }
 
@@ -321,7 +396,15 @@ function generateGalleryHTML(images, otherFiles) {
       color: #888;
     }
 
-    .copy-btn {
+    .item-actions,
+    .file-actions {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .copy-btn,
+    .delete-btn {
       background: rgba(139, 0, 0, 0.3);
       border: 1px solid rgba(139, 0, 0, 0.5);
       color: #ff6b6b;
@@ -331,16 +414,28 @@ function generateGalleryHTML(images, otherFiles) {
       font-size: 0.85rem;
       transition: all 0.3s ease;
       white-space: nowrap;
+      flex: 1;
     }
 
-    .copy-btn:hover {
+    .copy-btn:hover,
+    .delete-btn:hover {
       background: rgba(139, 0, 0, 0.5);
       border-color: rgba(139, 0, 0, 0.8);
       transform: scale(1.05);
     }
 
-    .copy-btn:active {
+    .copy-btn:active,
+    .delete-btn:active {
       transform: scale(0.95);
+    }
+
+    .delete-btn {
+      background: rgba(139, 0, 0, 0.2);
+    }
+
+    .delete-btn:hover {
+      background: rgba(139, 0, 0, 0.6);
+      color: #ff4444;
     }
 
     /* Responsive breakpoints */
@@ -420,27 +515,41 @@ function generateGalleryHTML(images, otherFiles) {
           <div class="stat-label">Images</div>
         </div>
         <div class="stat">
+          <div class="stat-number">${videos.length}</div>
+          <div class="stat-label">Videos</div>
+        </div>
+        <div class="stat">
           <div class="stat-number">${otherFiles.length}</div>
           <div class="stat-label">Other Files</div>
         </div>
         <div class="stat">
-          <div class="stat-number">${images.length + otherFiles.length}</div>
+          <div class="stat-number">${images.length + videos.length + otherFiles.length}</div>
           <div class="stat-label">Total</div>
         </div>
       </div>
     </header>
 
     ${images.length > 0 ? `
+      <h2 class="section-title">Images</h2>
       <div class="masonry-gallery">
         ${imageCards}
       </div>
-    ` : `
+    ` : ''}
+
+    ${videos.length > 0 ? `
+      <h2 class="section-title">Videos</h2>
+      <div class="masonry-gallery">
+        ${videoCards}
+      </div>
+    ` : ''}
+
+    ${images.length === 0 && videos.length === 0 ? `
       <div class="empty-state">
         <div class="empty-state-icon">📷</div>
-        <h2>No images yet</h2>
-        <p>Upload some screenshots with ShareX to get started!</p>
+        <h2>No media yet</h2>
+        <p>Upload some screenshots or videos with ShareX to get started!</p>
       </div>
-    `}
+    ` : ''}
 
     ${otherFiles.length > 0 ? `
       <h2 class="section-title">Other Files</h2>
@@ -475,6 +584,44 @@ function generateGalleryHTML(images, otherFiles) {
         console.error('Failed to copy:', err);
         alert('Failed to copy URL');
       });
+    }
+
+    async function deleteFile(url, filename) {
+      if (!confirm(\`Are you sure you want to delete "${filename}"?\nThis action cannot be undone.\`)) {
+        return;
+      }
+
+      const btn = event.target;
+      const originalText = btn.textContent;
+      btn.disabled = true;
+      btn.textContent = '⏳ Deleting...';
+
+      try {
+        const response = await fetch(url, {
+          method: 'DELETE'
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+          btn.textContent = '✓ Deleted!';
+          btn.style.background = 'rgba(0, 139, 0, 0.3)';
+          btn.style.borderColor = 'rgba(0, 139, 0, 0.5)';
+          btn.style.color = '#90EE90';
+
+          // Reload the page after a brief delay
+          setTimeout(() => {
+            window.location.reload();
+          }, 1000);
+        } else {
+          throw new Error(result.message || 'Delete failed');
+        }
+      } catch (err) {
+        console.error('Failed to delete:', err);
+        alert(\`Failed to delete file: \${err.message}\`);
+        btn.textContent = originalText;
+        btn.disabled = false;
+      }
     }
   </script>
 </body>
