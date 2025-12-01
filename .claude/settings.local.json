@@ -5,5 +5,12 @@
     ],
     "deny": [],
     "ask": []
-  }
+  },
+  "enabledMcpjsonServers": [
+    "cloudflare-r2",
+    "cloudflare-workers",
+    "cloudflare-bindings",
+    "cloudflare-kv",
+    "cloudflare-observability"
+  ]
 }

@@ -1,0 +1,22 @@
+{
+  "name": "sharex-gallery",
+  "version": "1.0.0",
+  "description": "Cloudflare Worker for ShareX R2 bucket gallery",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy"
+  },
+  "keywords": [
+    "cloudflare",
+    "worker",
+    "r2",
+    "sharex",
+    "gallery"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "wrangler": "^4.51.0"
+  }
+}

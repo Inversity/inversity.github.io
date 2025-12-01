@@ -1,0 +1,16 @@
+name = "sharex-gallery"
+main = "src/index.js"
+compatibility_date = "2025-12-01"
+account_id = "85511ece0bc24640e085eba401fc9893"
+
+# R2 bucket binding
+[[r2_buckets]]
+binding = "BUCKET"
+bucket_name = "sharex-storage"
+preview_bucket_name = "sharex-storage-preview"
+
+# Route configuration for custom domain
+# After deploying, you'll need to add a route in the Cloudflare dashboard or set up a custom domain
+# routes = [
+#   { pattern = "sharex.inversity.dev/*", zone_name = "inversity.dev" }
+# ]
