@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Babeth's Travel Tracker: Joe's Visit</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #f1f5f9; }
+        .glass { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
+        .status-pulse { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .5; } }
+        .storm-card { border-left: 6px solid #ef4444; }
+        .timeline-dot { width: 14px; height: 14px; background: #3b82f6; border-radius: 50%; position: absolute; left: -7px; top: 10px; border: 2px solid white; box-shadow: 0 0 5px rgba(0,0,0,0.1); }
+        .card-img { height: 160px; object-fit: cover; width: 100%; border-radius: 1rem 1rem 0 0; }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+
+    <div class="max-w-3xl mx-auto space-y-6">
+        
+        <!-- Header Personalized for Babeth -->
+        <header class="bg-gradient-to-r from-blue-700 to-indigo-800 rounded-3xl p-8 text-white shadow-2xl relative overflow-hidden">
+            <div class="relative z-10">
+                <div class="flex items-center space-x-2 text-blue-100 text-sm font-semibold uppercase tracking-widest mb-2">
+                    <i class="fa-solid fa-heart text-pink-400"></i>
+                    <span>For Babeth & Family</span>
+                </div>
+                <h1 class="text-4xl font-bold">Joe's Journey to Adele</h1>
+                <p class="text-blue-100 mt-2 text-lg">Jan 22 – Jan 27, 2026 • Travel Dashboard</p>
+                
+                <div class="mt-6 flex flex-wrap gap-3">
+                    <span class="bg-white/20 px-4 py-1.5 rounded-full text-sm font-medium backdrop-blur-sm">Conf: LF7BXM</span>
+                    <span class="bg-green-500 px-4 py-1.5 rounded-full text-sm font-bold flex items-center shadow-lg">
+                        <span class="w-2.5 h-2.5 bg-white rounded-full mr-2 status-pulse"></span>
+                        On Time
+                    </span>
+                </div>
+            </div>
+            <!-- Decorative Icon -->
+            <i class="fa-solid fa-paper-plane absolute -right-6 -bottom-6 text-[12rem] text-white/10 -rotate-12"></i>
+        </header>
+
+        <!-- STORM ALERT SECTION -->
+        <section class="storm-card bg-white rounded-2xl border border-red-100 shadow-xl overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1418985991508-e47386d96a71?auto=format&fit=crop&q=80&w=1000" alt="Winter Storm Radar" class="w-full h-32 object-cover opacity-80">
+            <div class="p-6 flex items-start space-x-4">
+                <div class="bg-red-500 p-3 rounded-xl text-white shadow-lg">
+                    <i class="fa-solid fa-cloud-showers-heavy text-xl"></i>
+                </div>
+                <div>
+                    <h3 class="text-red-900 font-bold text-xl">Winter Storm Advisory</h3>
+                    <p class="text-slate-600 text-sm mt-1 leading-relaxed font-medium">
+                        Babeth, heads up! A major system hits Chapel Hill <span class="text-red-600 font-bold">Jan 24-25</span>. Expect heavy ice and snow. Perfect for staying cozy inside, but travel will be difficult.
+                    </p>
+                    <div class="mt-3 flex space-x-4">
+                        <a href="https://www.weather.gov/rah/" target="_blank" class="text-xs font-bold text-blue-600 hover:text-blue-800 flex items-center">
+                            <i class="fa-solid fa-satellite-dish mr-1"></i> Local Radar
+                        </a>
+                        <a href="https://www.flyfrontier.com/travel/travel-alerts/" target="_blank" class="text-xs font-bold text-blue-600 hover:text-blue-800 flex items-center">
+                            <i class="fa-solid fa-plane-circle-exclamation mr-1"></i> Airline Alerts
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TIMELINE WITH PICTURES -->
+        <div class="bg-white rounded-3xl shadow-xl border border-slate-100 p-6 space-y-8">
+            <h2 class="text-2xl font-extrabold text-slate-800 flex items-center px-2">
+                <i class="fa-solid fa-map-location-dot mr-3 text-blue-600"></i>
+                The Journey Step-by-Step
+            </h2>
+
+            <div class="relative border-l-2 border-blue-100 ml-4 space-y-12 pb-6">
+                
+                <!-- Step 1: Parking -->
+                <div class="relative pl-10 group">
+                    <div class="timeline-dot group-hover:scale-125 transition"></div>
+                    <p class="text-sm font-bold text-blue-500 uppercase tracking-wider">Jan 22 • 10:30 AM</p>
+                    <h4 class="font-bold text-slate-900 text-xl">CLE Airport Parking</h4>
+                    <p class="text-slate-500">19000 Snow Rd, Cleveland</p>
+                    <div class="mt-4 bg-slate-50 border border-slate-200 rounded-2xl p-4 flex items-center justify-between hover:border-blue-300 transition cursor-pointer">
+                        <div class="flex items-center space-x-3">
+                            <i class="fa-solid fa-square-parking text-2xl text-slate-400"></i>
+                            <span class="text-sm font-bold text-slate-700 underline">Tap to View Parking QR Code</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-right text-slate-300"></i>
+                    </div>
+                </div>
+
+                <!-- Step 2: CLE Departure -->
+                <div class="relative pl-10">
+                    <div class="timeline-dot"></div>
+                    <p class="text-sm font-bold text-blue-600 uppercase tracking-wider">Jan 22 • 12:30 PM</p>
+                    <div class="bg-slate-50 rounded-2xl mt-2 overflow-hidden border border-slate-100 shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1542296332-2e4473faf563?auto=format&fit=crop&q=80&w=1000" class="card-img" alt="Cleveland Airport">
+                        <div class="p-4">
+                            <h4 class="font-bold text-slate-900 text-lg">Frontier 1056 ➔ Orlando</h4>
+                            <div class="flex items-center space-x-4 mt-1">
+                                <span class="text-sm font-semibold text-slate-600 bg-white px-2 py-1 rounded border">Seat 18D</span>
+                                <a href="https://www.flightaware.com/live/flight/FFT1056" target="_blank" class="text-xs font-bold text-blue-600 hover:underline">Track Live Position <i class="fa-solid fa-location-arrow ml-1"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3: Orlando Layover -->
+                <div class="relative pl-10">
+                    <div class="timeline-dot"></div>
+                    <p class="text-sm font-bold text-slate-400 uppercase tracking-wider">Jan 22 • 3:09 PM</p>
+                    <div class="bg-slate-50 rounded-2xl mt-2 overflow-hidden border border-slate-100 shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?auto=format&fit=crop&q=80&w=1000" class="card-img" alt="Orlando Airport">
+                        <div class="p-4">
+                            <h4 class="font-bold text-slate-900 text-lg">Layover in Orlando (MCO)</h4>
+                            <p class="text-slate-500 text-sm">Wait Time: 3h 48m</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 4: Final Leg to RDU -->
+                <div class="relative pl-10">
+                    <div class="timeline-dot"></div>
+                    <p class="text-sm font-bold text-blue-600 uppercase tracking-wider">Jan 22 • 6:57 PM</p>
+                    <div class="bg-slate-50 rounded-2xl mt-2 overflow-hidden border border-slate-100 shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1436491865332-7a61a109c0f2?auto=format&fit=crop&q=80&w=1000" class="card-img" alt="Raleigh Durham Airport">
+                        <div class="p-4">
+                            <h4 class="font-bold text-slate-900 text-lg">Frontier 1786 ➔ Raleigh</h4>
+                            <p class="text-slate-600 font-bold text-sm">Landing: 8:51 PM</p>
+                            <a href="https://www.flightaware.com/live/flight/FFT1786" target="_blank" class="text-xs font-bold text-blue-600 hover:underline mt-2 inline-block">Arrival Tracker <i class="fa-solid fa-up-right-from-square ml-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 5: Airbnb -->
+                <div class="relative pl-10">
+                    <div class="timeline-dot"></div>
+                    <p class="text-sm font-bold text-green-600 uppercase tracking-wider">Jan 22 • 9:30 PM</p>
+                    <div class="bg-green-50 rounded-2xl mt-2 overflow-hidden border border-green-100 shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=1000" class="card-img" alt="Cozy Chapel Hill Home">
+                        <div class="p-4">
+                            <h4 class="font-bold text-green-900 text-lg">Chapel Hill Check-in</h4>
+                            <p class="text-green-800 text-sm">308 N Estes Dr, Chapel Hill</p>
+                            <div class="mt-3 text-xs bg-white/50 p-2 rounded text-green-700 font-medium">
+                                Hosted by Sally • Conf: HM2KYCDNF3
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- QUICK LINKS FOR BABETH -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-white p-6 rounded-3xl shadow-xl border border-slate-100">
+                <h3 class="font-bold text-slate-800 mb-4 flex items-center text-lg">
+                    <i class="fa-solid fa-suitcase-rolling mr-2 text-orange-500"></i>
+                    Babeth's Travel Links
+                </h3>
+                <div class="space-y-3">
+                    <a href="https://booking.flyfrontier.com/Booking/Retrieve?ln=Wayne&rl=LF7BXM" target="_blank" class="flex items-center justify-between p-4 bg-slate-50 rounded-2xl hover:bg-blue-50 hover:border-blue-200 border border-transparent transition shadow-sm">
+                        <span class="text-sm font-bold text-slate-700">Official Frontier Hub</span>
+                        <i class="fa-solid fa-arrow-right-long text-blue-400"></i>
+                    </a>
+                    <a href="https://www.priceline.com/travel-itinerary/?offertoken=3E04DE717384852BD9A98A97C283B240F01DFB42B03F887C8E46E4281BAD7A38" target="_blank" class="flex items-center justify-between p-4 bg-slate-50 rounded-2xl hover:bg-blue-50 hover:border-blue-200 border border-transparent transition shadow-sm">
+                        <span class="text-sm font-bold text-slate-700">Priceline Full Details</span>
+                        <i class="fa-solid fa-arrow-right-long text-blue-400"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-3xl shadow-xl border border-slate-100 flex flex-col justify-center items-center text-center space-y-2">
+                <i class="fa-solid fa-heart text-pink-500 text-4xl mb-2"></i>
+                <h3 class="font-extrabold text-slate-800">Can't wait to see you!</h3>
+                <p class="text-sm text-slate-500 font-medium italic">"See you soon, Babeth! Safe flight, Joe!"</p>
+                <p class="text-xs text-slate-400 pt-2">— Love from your Travel Hub AI</p>
+            </div>
+        </div>
+
+        <p class="text-center text-slate-400 text-xs pb-12 font-medium">
+            Personalized Hub for Joe & Babeth • Jan 22, 2026
+        </p>
+
+    </div>
+
+</body>
+</html>
