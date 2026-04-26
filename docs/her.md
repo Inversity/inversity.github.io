@@ -1,7 +1,9 @@
 ---
 layout: default
-title: Her
-permalink: /kisskisskissheralloverthemindsconveyer/
+title: Me, Kiki, Beef, Papaya(ComingSoon) and **HER**
+date: 2026-04-25
+tags: [dove, kiki, beef, papaya(soon™️), lanky or rotund?, bearded dragon, pacman frog, her, love, kiss, lick, dove, mine, in and out]
+permalink: /kisskisskissheralloverinsideandout/
 # nav_order: 1
 ---
 
