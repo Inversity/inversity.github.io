@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "Bash(cat:*)"
+      "Bash(cat:*)",
+      "PowerShell($env:Path = [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"Machine\"\\) + \";\" + [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"User\"\\); magick identify -format \"%f --> %w x %h, %b`n\" \"C:\\\\Repositories\\\\inversity\\\\inversity-github-website\\\\docs\\\\assets\\\\img\\\\her\\\\us.jpg\")"
     ],
     "deny": [],
     "ask": []

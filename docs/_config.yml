@@ -31,6 +31,18 @@ url: "https://inversity.github.io" # the base hostname & protocol for your site,
 show_downloads: false
 show_github_link: false
 
+# Sitewide default OG/preview image (overridable per-page via `image:` frontmatter)
+image: /favicon/preview.jpg
+
+# Apply noindex to every page by default. Override on a per-page basis with
+# `noindex: false` in frontmatter if you ever want a page to be indexable.
+defaults:
+  - scope:
+      path: ""
+    values:
+      noindex: true
+      sitemap: false
+
 # Build settings
 remote_theme: pages-themes/midnight@v0.2.0
 
@@ -38,6 +50,7 @@ remote_theme: pages-themes/midnight@v0.2.0
 plugins:
 - jekyll-feed
 - jekyll-remote-theme
+- jekyll-seo-tag
 
 # Collections
 collections:

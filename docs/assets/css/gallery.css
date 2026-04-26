@@ -1,0 +1,118 @@
+/* Wider content area for gallery pages */
+.gallery-page .wrapper {
+  max-width: 1600px !important;
+  width: 95% !important;
+}
+
+.gallery-page section {
+  max-width: 100% !important;
+}
+
+.centered {
+  text-align: center;
+}
+
+/* Masonry gallery */
+.masonry-gallery {
+  column-count: 4;
+  column-gap: 1.2em;
+  padding: 1em 0;
+}
+
+.masonry-item {
+  break-inside: avoid;
+  margin-bottom: 1.2em;
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.masonry-item img {
+  width: 100%;
+  display: block;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(139, 0, 0, 0.4);
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+
+.masonry-item:hover img {
+  transform: scale(1.05);
+  box-shadow: 0 8px 30px rgba(139, 0, 0, 0.7);
+}
+
+@media (max-width: 1400px) {
+  .masonry-gallery { column-count: 3; }
+}
+
+@media (max-width: 900px) {
+  .masonry-gallery { column-count: 2; }
+}
+
+@media (max-width: 600px) {
+  .masonry-gallery { column-count: 1; }
+}
+
+/* Lightbox */
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.lightbox-overlay[hidden] {
+  display: none;
+}
+
+.lb-img {
+  max-width: 92vw;
+  max-height: 92vh;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 0 40px rgba(139, 0, 0, 0.6);
+}
+
+.lb-close,
+.lb-prev,
+.lb-next {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  border: none;
+  font-size: 2.5rem;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.lb-close:hover,
+.lb-prev:hover,
+.lb-next:hover {
+  background: rgba(139, 0, 0, 0.8);
+}
+
+.lb-close { top: 20px; right: 20px; }
+.lb-prev  { left: 20px;  top: 50%; transform: translateY(-50%); }
+.lb-next  { right: 20px; top: 50%; transform: translateY(-50%); }
+
+.lb-counter {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+}

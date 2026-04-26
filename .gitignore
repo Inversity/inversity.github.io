@@ -1,0 +1,16 @@
+# Jekyll build output
+docs/_site/
+docs/.sass-cache/
+docs/.jekyll-cache/
+docs/.jekyll-metadata
+docs/vendor/
+
+# Local masters for the gallery — too big to ship; keep only on disk.
+# The build-her-gallery.ps1 script reads these and emits resized
+# copies into docs/assets/img/her/{full,thumb}/ which DO get committed.
+docs/_originals/
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+*.swp
