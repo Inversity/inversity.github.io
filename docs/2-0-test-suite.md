@@ -5,7 +5,7 @@ description: Notes
 category: blazebite
 date: 01/05/2026
 permalink: /2-0-test-suite/
-tags: [BlazeBite, Kitchen, Kiosk, App, POS, Point of Sale, Test Plan, QA, Quality Assurance]
+tags: [BlazeBite, 2.0, Android, Test Plan, QA, Quality Assurance, Kitchen, Kiosk, App, POS, Point of Sale]
 ---
 
 ---
