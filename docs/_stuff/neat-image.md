@@ -1,10 +1,10 @@
 ---
 layout: stuff
-title: "Cool Image I Like"
+title: "Example `Image I Like`"
 category: image
 date: 2025-11-04
 image_url: "https://github.githubassets.com/images/icons/emoji/octocat.png"
-tags: [art, photography]
+tags: [art, octocat]
 ---
 
 This is an example image item. You can link to images in your assets folder or external URLs.

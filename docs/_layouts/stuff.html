@@ -7,8 +7,9 @@ layout: default
     <h1>{{ page.title }}</h1>
 
     <p style="color: #888; font-size: 0.9em">
-      {% assign cat = site.data.categories | where: "name", page.category | first %} {% if cat %}<span class="category-icon">{{
-      cat.icon }}</span> {{ cat.display }}{% endif %} &nbsp;•&nbsp; {{ page.date | date: "%B %d, %Y" }}
+      {% assign cat = site.data.categories | where: "name", page.category | first %} {% if cat %}<span
+        class="category-icon">{{
+        cat.icon }}</span> {{ cat.display }}{% endif %} &nbsp;•&nbsp; {{ page.date | date: "%B %d, %Y" }}
     </p>
 
     {% if page.tags %}
@@ -22,10 +23,7 @@ layout: default
 
   {% if page.category == "video" and page.embed_url %}
   <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; margin: 2em 0">
-    <iframe src="{{ page.embed_url }}" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%"
-      frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen>
-    </iframe>
+    {% include youtubePlayer.html id=page.youtubeId %}
   </div>
   {% endif %} {% if page.category == "image" and page.image_url %}
   <div style="margin: 2em 0; text-align: center">

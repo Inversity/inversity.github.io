@@ -1,26 +1,26 @@
 - name: video
   display: Videos
-  icon: "[VIDEO]"
+  icon: "🎥"
 
 - name: article
   display: Articles
-  icon: "[ARTICLE]"
+  icon: "📰"
 
 - name: image
   display: Images
-  icon: "[IMAGE]"
+  icon: "📷"
 
 - name: music
   display: Music
-  icon: "[MUSIC]"
+  icon: "🎶"
 
 - name: tool
   display: Tools
-  icon: "[TOOL]"
+  icon: "🔨"
 
 - name: other
   display: Other
-  icon: "[OTHER]"
+  icon: "❔"
 
 - name: blazebite
   display: BlazeBite
