@@ -18,8 +18,8 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: brain
-tagline: isn't it comfortable?
+title: Mind
+tagline: entropy
 email: admin@inversity.dev
 description: >- # this means to ignore newlines until "baseurl:"
   Documentation of the brain.
@@ -27,7 +27,7 @@ baseurl: "" # the subpath of your site, e.g. /blog
 domain: inversity.dev
 url: "https://inversity.dev" # the base hostname & protocol for your site, e.g. http://example.com
 # twitter_username: jekyllrb
-# github_username:  jekyll
+github_username: inversity
 show_downloads: false
 show_github_link: false
 
