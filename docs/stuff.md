@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Cool Stuff
-nav_order: 2
+title: Index
+nav_order: 1
 ---
 
-# Cool Stuff I've Found
+<h1>{{ page.title }}</h1>
 
 A collection of interesting things I've discovered around the internet.
 
