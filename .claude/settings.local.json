@@ -4,7 +4,8 @@
       "Bash(cat:*)",
       "PowerShell($env:Path = [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"Machine\"\\) + \";\" + [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"User\"\\); magick identify -format \"%f --> %w x %h, %b`n\" \"C:\\\\Repositories\\\\inversity\\\\inversity-github-website\\\\docs\\\\assets\\\\img\\\\her\\\\us.jpg\")",
       "Bash(bundle exec *)",
-      "Read(//c/Users/joewa/AppData/Roaming/Code - Insiders/User/**)"
+      "Read(//c/Users/joewa/AppData/Roaming/Code - Insiders/User/**)",
+      "Bash(gh run *)"
     ],
     "deny": [],
     "ask": []
