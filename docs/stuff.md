@@ -17,7 +17,7 @@ A collection of interesting things I've discovered around the internet.
   <h1 style="margin: 0 0 0.3em;"><a href="{{ item.url }}">{{ item.title }}</a></h1>
   <p style="color: #888; font-size: 0.9em; margin: 0 0 1em;">
     {% assign cat = site.data.categories | where: "name", item.category | first %}
-    {% if cat %}{{ cat.icon }} {{ cat.display }}{% endif %}
+    {% if cat %}<span class="category-icon">{{ cat.icon }}</span> {{ cat.display }}{% endif %}
     &nbsp;•&nbsp; {{ item.date | date: "%B %d, %Y" }}
   </p>
 
@@ -40,7 +40,7 @@ A collection of interesting things I've discovered around the internet.
   {% assign items = site.stuff | where: "category", category.name %}
   {% if items.size > 0 %}
 <div style="margin-bottom: 2.5em;">
-  <h1 style="margin: 0 0 0.4em;">{{ category.icon }} {{ category.display }} <span style="opacity: 0.6; font-size: 0.7em;">({{ items.size }})</span></h1>
+  <h1 style="margin: 0 0 0.4em;"><span class="category-icon">{{ category.icon }}</span> {{ category.display }} <span style="opacity: 0.6; font-size: 0.7em;">({{ items.size }})</span></h1>
   <ul style="margin: 0; padding-left: 1.5em;">
     {% for item in items %}
     <li style="margin-bottom: 0.3em;">

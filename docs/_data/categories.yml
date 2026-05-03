@@ -21,3 +21,7 @@
 - name: other
   display: Other
   icon: "[OTHER]"
+
+- name: blazebite
+  display: BlazeBite
+  icon: <img src="/assets/img/icons/bb-300-ppi-logo-no-text-color.png">

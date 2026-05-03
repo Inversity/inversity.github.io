@@ -148,6 +148,13 @@ nav a:hover {
   transform: translateY(-2px);
 }
 
+/* Category icons — sized to match surrounding text when an <img> is used */
+.category-icon img {
+  height: 3em;
+  width: auto;
+  vertical-align: middle;
+}
+
 /* Stuff item styling */
 .stuff-item {
   border-left: 3px solid #8b0000;
@@ -193,46 +200,4 @@ textarea:focus {
   border-color: #8b0000;
   box-shadow: 0 0 10px rgba(139, 0, 0, 0.5);
   outline: none;
-}
-
-/* Continuous-numbered ordered lists.
-   Opt-in via `body_class: continuous-list` in page frontmatter.
-   Kramdown emits a fresh <ol> for each bold-paragraph break and never
-   sets `start="N"`, so we replace native list markers with a CSS counter
-   that survives the breaks. Counter activates after the first <hr>
-   (separating TOC from numbered content) and disables again after the
-   "List of Notable Findings" h2 so summary index lists restart at 1. */
-body.continuous-list {
-  section { counter-reset: testcount; }
-
-  hr ~ ol {
-    list-style: none;
-    padding-left: 2.5em;
-
-    > li {
-      counter-increment: testcount;
-      position: relative;
-    }
-
-    > li::before {
-      content: counter(testcount) ".";
-      position: absolute;
-      left: -2.25em;
-      width: 1.75em;
-      text-align: right;
-      color: #ff6666;
-    }
-  }
-
-  h2#list-of-notable-findings ~ ol,
-  h2#list-of-notable-findings ~ * ol {
-    list-style: decimal;
-    padding-left: 2.5em;
-
-    > li {
-      counter-increment: none;
-
-      &::before { content: none; }
-    }
-  }
 }

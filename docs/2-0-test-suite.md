@@ -1,33 +1,41 @@
 ---
-layout: default
-body_class: continuous-list
-nav_order: 5
+layout: misc
+title: Kitchen App 2.0 | QA Test Plan Notes
+description: Notes
+category: blazebite
+date: 01/05/2026
+permalink: /2-0-test-suite/
+tags: [BlazeBite, Kitchen, Kiosk, App, POS, Point of Sale, Test Plan, QA, Quality Assurance]
 ---
 
-# Kitchen App 2.0 | QA Test Plan Notes
+---
 
-**Tester**: Joe  
-**Device**: SILK Terminal/Android Tablet  
-**Date**: 04/20/2026 - 05/01/2026  
+**Tester:** Joe  
+**Device:** SILK Terminal/Android Tablet  
+**Date:** 04/20/2026 - 05/01/2026  
 
-## Table of Contents
+## Table of Contents {#toc}
 
-1. [Launch & Authentication](#1--launch--authentication)
-2. [App Header & Navigation Bar](#2--app-header--navigation-bar)
-3. [Live Orders (Kitchen Board)](#3--live-orders-kitchen-board)
-4. [Order History](#4--order-history)
-5. [POS & Cash Flows](#5--pos--cash-flows)
-6. [Settings](#6--settings)
-7. [Reports](#7--reports)
-8. [Menus](#8--menus)
-9. [Hardware Integration](#9--hardware-integration)
-10. [Kiosk](#10--kiosk)
-11. [Connectivity & Resilience](#11--connectivity--resilience)
-12. [List of Bugs Found](#list-of-notable-findings)  
+---
+
+1. [Launch & Authentication](#launch-auth)
+2. [App Header & Navigation Bar](#app-header-nav-bar)
+3. [Live Orders (Kitchen Board)](#live-orders)
+4. [Order History](#order-history)
+5. [POS & Cash Flows](#pos-cash-flows)
+6. [Settings](#settings)
+7. [Reports](#reports)
+8. [Menus](#menus)
+9. [Hardware Integration](#hardware-integration)
+10. [Kiosk](#kiosk)
+11. [Connectivity & Resilience](#connectivity-resilience)
+12. [List of Bugs Found](#notable-findings)  
     - [List of Failed Tests](#failed-tests)  
-    - [List of Semi-Passed/Failed Tests](#semi-passedfailed-tests)  
+    - [List of Semi-Passed/Failed Tests](#semi-passed-semi-failed-tests)  
 
-## 1 | Launch & Authentication
+## 1. Launch & Authentication {#launch-auth}
+
+---
 
 **App Launch:**
 
@@ -45,15 +53,17 @@ nav_order: 5
 **Sign-out:**  
 
 8. Pass ✔️  
-9. <a id="fail-9"></a>**Fail** ❌: Pressing back _does_ take you back into the Venue. The venue is accessible and active.  
+9. <a id="fail-9"></a>**Fail** ❌: Pressing back _does_ take you back into the Venue. The entire Venue is accessible and active.  
 
 **Additional Notes:**
 
-- Test 9. was mentioned to you in our conversation in Slack previously.  
+- [Test 9](#fail-9). was mentioned to you in our conversation in Slack previously.  
 
-##### [Return to Top](#table-of-contents)
+<sub>[Return to Top](#toc)</sub>
 
-## 2 | App Header & Navigation Bar
+## 2. App Header & Navigation Bar {#app-header-nav-bar}
+
+---
 
 **Venue Status Indicator:**  
 
@@ -79,22 +89,24 @@ nav_order: 5
 26. Pass ✔️
 27. <a id="fail-27"></a>**Fail** ❌: On my Samsung Tablet (Galaxy A7 Lite), the buttons push off the right side of the screen. I cannot see/access the "Settings" button due to this.
 
-**Additional Notes**:
+**Additional Notes:**
 
-[Return to Top](#table-of-contents)
+<sub>[Return to Top](#toc)</sub>
 
-## 3 | Live Orders (Kitchen Board)
+## 3. Live Orders (Kitchen Board) {#live-orders}
 
-**Now Making Panel**:
+---
+
+**Now Making Panel:**
 
 28. **Cannot Test**
 29. **Cannot Test**
 30. **Cannot Test**
 31. **Cannot Test**
 
-**Order Card Display**:
+**Order Card Display:**
 
-32. <a id="semi-32"></a>_Semi-Pass_ ⚠️
+32. <a id="semi-32"></a>_Semi-Pass_ ⚠️:
     - Displays all info except it shows the `Pickup Location` for orders placed via App or Web, and `Cash Register` for orders placed via POS, `Kiosk` for orders via Kiosk.  
     - Does not show order total
 33. **Cannot Test**
@@ -104,13 +116,13 @@ nav_order: 5
 37. **Cannot Test**
 38. **Cannot Test**
 
-**Filter - Items Older Than 15. Minutes**:
+**Filter - Items Older Than 15. Minutes:**
 
 39. **Cannot Test**
 40. **Cannot Test**
 41. **Cannot Test**
 
-**Bulk Actions**:
+**Bulk Actions:**
 
 42. **Cannot Test**
 43. **Cannot Test**
@@ -122,20 +134,22 @@ nav_order: 5
 49. **Cannot Test**
 50. **Cannot Test**
 
-**Individual Order Actions**:
+**Individual Order Actions:**
 
 51. **Cannot Test**
 52. **Cannot Test**
 53. **Cannot Test**
 54. **Cannot Test**
 
-**Additional Notes**:
+**Additional Notes:**
 
-[Return to Top](#table-of-contents)
+<sub>[Return to Top](#toc)</sub>
 
-## 4 | Order History
+## 4. Order History {#order-history}
 
-**History List**:
+---
+
+**History List:**
 
 55. Pass ✔️
 56. Pass ✔️
@@ -143,24 +157,24 @@ nav_order: 5
 58. Pass ✔️
 59. Pass ✔️
 
-**Order Row (Header)**:
+**Order Row (Header):**
 
 60. Pass ✔️
 61. Pass ✔️
 62. Pass ✔️
 63. Pass ✔️
 
-**Order Detail Panel**:
+**Order Detail Panel:**
 
-64. Pass ✔️ - Expands the detail panel
+64. Pass ✔️: Expands the detail panel
 65. Pass ✔️
 66. Pass ✔️
 67. <a id="semi-67"></a>_Semi-Pass_ ⚠️: The `Customer Notified` row is present, but it is lacking a timestamp.
 68. <a id="semi-68"></a>_Semi-Pass_ ⚠️: Button is displayed, but only venue-level fields are shown when tapped
 69. <a id="semi-69"></a>_Semi-Pass_ ⚠️: Button is displayed, but only venue-level fields are shown when tapped
-70. Pass ✔️ - (Need re-test when fix is implemented)
+70. Pass ✔️: (Need re-test when fix is implemented)
 
-**Refund - Card Payment**:
+**Refund - Card Payment:**
 
 71. Pass ✔️
 72. Pass ✔️
@@ -177,53 +191,55 @@ nav_order: 5
 83. Pass ✔️
 84. Pass ✔️
 85. Pass ✔️
-86. Pass ✔️ - Tested using an incredibly small, but long decimal ($.00000000000000000000000000000000001)
+86. Pass ✔️: Tested using an incredibly small, but long decimal ($.00000000000000000000000000000000001)
 
-**Refund - Cash Payment**:
+**Refund - Cash Payment:**
 
 87. Pass ✔️
 88. Pass ✔️
 89. <a id="fail-89"></a>**Fail** ❌: `REFUNDED` does not appear in any row or color. Doing a Full Refund just marks it to `$0.00`
 
-**Notify Customer**:
+**Notify Customer:**
 
 90. Pass ✔️
 91. Pass ✔️
 92. Pass ✔️
 93. Pass ✔️
 
-**Print / Reprint**:
+**Print / Reprint:**
 
 94. Pass ✔️
 95. Pass ✔️
 96. Pass ✔️
 97. Pass ✔️
 
-**Additional Notes**:
+**Additional Notes:**  
 
-- _Print / Reprint_: Potential bug I mentioned to you via Slack on 04/29/26. | Having some seemingly unrelated, buggy behavior regarding printing and I _think_ the app/device sleeping or spending a long time without doing anything (>20 minutes). Will test more and keep posted.
+- _Print / Reprint_: Potential bug I mentioned to you via Slack on 04/29/26. Having some seemingly unrelated, buggy behavior regarding printing and I _think_ the app/device sleeping or spending a long time without doing anything (>20 minutes). Will test more and keep posted.
 
-[Return to Top](#table-of-contents)
+<sub>[Return to Top](#toc)</sub>
 
-## 5 | POS & Cash Flows
+## 5. POS & Cash Flows {#pos-cash-flows}
 
-**POS Mode - Navigation & Layout**:
+---
+
+**POS Mode - Navigation & Layout:**
 
 98. Pass ✔️
 99. Pass ✔️
 100. Pass ✔️
 101. <a id="fail-101"></a>**Fail** ❌: This is actually the opposite - the tablet I have completely fails to output the POS correctly. Everything is smushed together. This was the same on the previous versions of Kitchen App POS as well (<2.0)
 
-**POS - Building an Order**:
+**POS - Building an Order:**
 
 102. Pass ✔️
 103. Pass ✔️
 104. Pass ✔️
 105. Pass ✔️
-106. <a id="fail-106"></a>**Fail** ❌: I do not see a `order-items` button. I cannot see a way to view Item Customizations, Item Customer Customizations, or Venue Customizations.
+106. <a id="fail-106"></a>**Fail** ❌: I do not see a `order-items` button. I cannot see a way to view `Item Customizations`, Item `Customer Customizations`, or `Venue Customizations`.
 107. <a id="fail-107"></a>**Fail** ❌: See above.
 
-**POS - Credit Card Payment Flow**:
+**POS - Credit Card Payment Flow:**
 
 108. Pass ✔️
 109. Pass ✔️
@@ -233,7 +249,7 @@ nav_order: 5
 113. Pass ✔️
 114. <a id="fail-114"></a>**Fail** ❌: _**Confirmed App Crash.**_ Begin CC Stripe Payment process. When customer enters card, tap "Cancel". This then causes app to stop working and crash to desktop.
 
-**POS - Cash Payment Flow**:
+**POS - Cash Payment Flow:**
 
 115. Pass ✔️
 116. Pass ✔️
@@ -242,25 +258,27 @@ nav_order: 5
 119. Pass ✔️
 120. Pass ✔️
 
-**End of Day / Session Totals**:
+**End of Day / Session Totals:**
 
 121. <a id="fail-121"></a>**Fail** ❌: `End of Day` not available in either `Reports` or `POS` screens
 122. ?
 123. Pass ✔️
 
-**Additional Notes**:
+**Additional Notes:**
 
-[Return to Top](#table-of-contents)
+<sub>[Return to Top](#toc)</sub>
 
-## 6 | Settings
+## 6. Settings {#settings}
 
-**Layout & Navigation**:
+---
+
+**Layout & Navigation:**
 
 124. Pass ✔️
 125. Pass ✔️
-126. Pass ✔️ - Looks good once it's open on the Tablet
+126. Pass ✔️: Looks good once it's open on the Tablet
 
-**Printer**:
+**Printer:**
 
 127. Pass ✔️
 128. Pass ✔
@@ -269,9 +287,9 @@ nav_order: 5
 131. Pass ✔️
 132. <a id="semi-132"></a>_Semi-Pass_ ⚠️: Unsure - The `Connected`/`Disconnected` button does nothing. The only way to connect/reconnect is by tapping `Scan for Printers`
 133. Pass ✔️
-134. Pass ✔️ - Note: Even with no Printer connected, the toast still says "Test ticket sent to printer".
+134. Pass ✔️: _NOTE_ - Even with no Printer connected, the toast still says "Test ticket sent to printer".
 
-**Card Reader**:
+**Card Reader:**
 
 135. Pass ✔️
 136. Pass ✔️
@@ -281,7 +299,7 @@ nav_order: 5
 140. Pass ✔️
 141. Pass ✔️
 
-**Terminal**:
+**Terminal:**
 
 142. Pass ✔️
 143. Pass ✔️
@@ -289,60 +307,64 @@ nav_order: 5
 145. Pass ✔️
 146. Pass ✔️
 
-**Order Routing**:
+**Order Routing:**
 
 147. Pass ✔️
 148. Pass ✔️
 
-**Order Preferences**:
+**Order Preferences:**
 
 149. Pass ✔️
 150. <a id="fail-150"></a>**Fail** ❌: This option does not exist.
 151. Pass ✔️
 
-**Venue Status**:
+**Venue Status:**
 
-152. Pass ✔️ - Note: This is only a toggle, so it won't switch between `Open / Paused / Closed` here.
-153. Pass ✔️ - See Above.
+152. Pass ✔️: _NOTE_ - This is only a toggle, so it won't switch between `Open / Paused / Closed` here.
+153. Pass ✔️: See Above.
 
-**Account**:
+**Account:**
 
 154. <a id="fail-154"></a>**Fail** ❌: Only displays `Venue ID` info & `Sign Out` button.
-155. <a id="semi-155"></a>_Semi-Pass_ ⚠️: See [Sign-out- Test 9.](fail-9) from previously section
+155. <a id="semi-155"></a>_Semi-Pass_ ⚠️: See [Test 9.](fail-9) `Sign-in` Section.
 
-**Diagnostics**:
+**Diagnostics:**
 
 156. Pass ✔️
 157. Pass ✔️
 158. Pass ✔️
 159. Pass ✔️
-160. Cannot Test - No Custom G700
-161. Cannot Test - Don't have access to Logcat
+160. **Cannot Test:** No Custom G700
+161. **Cannot Test:** Don't have access to Logcat
 
-**Additional Notes**:
+**Additional Notes:**
 
-[Return to Top](#table-of-contents)
+<sub>[Return to Top](#toc)</sub>
 
-## 7 | Reports
+## 7. Reports {#reports}
 
-**Live Reports**:
+---
+
+**Live Reports:**
 
 162. Pass ✔️
 163. Pass ✔️
 164. Pass ✔️
 
-**Print Daily Stats**:
+**Print Daily Stats:**
 
 165. Pass ✔️
 166. <a id="fail-166"></a>**Fail** ❌: Cash Orders via POS do not show on the printout. They are excluded and instead show the total for all other orders correctly.
 
-**Additional Notes**:
+**Additional Notes:**
 
-[Return to Top](#table-of-contents)
+<sub>[Return to Top](#toc)</sub>
 
-## 8 | Menus
+## 8. Menus {#menus}
 
-**Menu Management**:
+---
+
+**Menu Management:**
 
 167. Pass ✔️
 168. Pass ✔️
@@ -351,13 +373,15 @@ nav_order: 5
 171. Pass ✔️
 172. Pass ✔️
 
-**Additional Notes**:
+**Additional Notes:**
 
-[Return to Top](#table-of-contents)
+<sub>[Return to Top](#toc)</sub>
 
-## 9 | Hardware Integration
+## 9. Hardware Integration {#hardware-integration}
 
-**Printer - SILK/SUNMI (USB + Bluetooth)**:
+---
+
+**Printer - SILK/SUNMI (USB + Bluetooth):**
 
 173. Pass ✔️
 174. Pass ✔️
@@ -367,43 +391,45 @@ nav_order: 5
 178. Pass ✔️
 179. Pass ✔️
 
-**Printer - TREK / CUSTOM G70.0 (Bluetooth)**:
+**Printer - TREK / CUSTOM G70.0 (Bluetooth):**
 
 180. **Cannot Test**
 181. **Cannot Test**
 182. **Cannot Test**
 
-**Cash Drawer - TREK Direct Port (APOS SDK)**:
+**Cash Drawer - TREK Direct Port (APOS SDK):**
 
 183. **Cannot Test**
 184. **Cannot Test**
 185. **Cannot Test**
 186. **Cannot Test**
 
-**Stripe Card Reader (M2)**:
+**Stripe Card Reader (M2):**
 
 187. Pass ✔️
-188. Pass ✔️ - Though no way to verify it is correct
+188. Pass ✔️: Though no way to verify it is correct
 189. Pass ✔️
 190. Pass ✔️
 191. Pass ✔️
 
-**Additional Note**:
+**Additional Notes:**
 
 - In the Android Settings section for `USB`, if `Connect to PC` is toggled on, the USB Printer is not able to connect.
 - **M2 Connectivity Issues:** When no internet is present (disabling WiFi), it shows the correct error message of `Discovery Failed`. However, when loss of internet is present, but WiFi is active (tested via setting an incorrect Static IP address), the device attempts to connect, and then the app crashes.
 
-[Return to Top](#table-of-contents)
+<sub>[Return to Top](#toc)</sub>
 
-## 10 | Kiosk
+## 10. Kiosk {#kiosk}
 
-**Welcome Screen & Attract Loop**:
+---
+
+**Welcome Screen & Attract Loop:**
 
 192. Pass ✔️
 193. Pass ✔️
 194. Pass ✔️
 
-**Menu Browsing**:
+**Menu Browsing:**
 
 195. Pass ✔️
 196. Pass ✔️
@@ -414,7 +440,7 @@ nav_order: 5
 201. Pass ✔️
 202. Pass ✔️
 
-**Order Summary / Cart**:
+**Order Summary / Cart:**
 
 203. Pass ✔️
 204. Pass ✔️
@@ -424,22 +450,22 @@ nav_order: 5
 208. <a id="fail-208"></a>**Fail** ❌: At no point, whether item-level or venue-level, are Customer Fields shown/presented/required.
 209. <a id="semi-209"></a>_Semi-Pass_ ⚠️: It does not contain item-level fields
 
-**Checkout - Credit Card**:
+**Checkout - Credit Card:**
 
 210. N/A - Only Credit Card is implemented
-211. Pass ✔️ - Automatically selects Credit Card, but it does complete the Stripe M2 flow successfully
+211. Pass ✔️: Automatically selects Credit Card, but it does complete the Stripe M2 flow successfully
 212. Pass ✔️
 213. Pass ✔️
 214. Pass ✔️
 215. Pass ✔️
 
-**Checkout - Cash (if applicable)**:
+**Checkout - Cash (if applicable):**
 
 216. N/A
 217. N/A
 218. N/A
 
-**Receipt Options**:
+**Receipt Options:**
 
 219. Pass ✔️
 220. Pass ✔️
@@ -447,85 +473,89 @@ nav_order: 5
 222. Pass ✔️
 223. Pass ✔️
 
-**Screen Size & Layout**:
+**Screen Size & Layout:**
 
-224. N/A - On my Tablet, it looks absolutely awful, but we control what devices this is App is run on.
+224. **N/A:** On my Tablet, it looks absolutely awful, but we control what devices this is App is run on.
 225. Pass ✔️
-226. Pass ✔️ - On my Terminal at least.
+226. Pass ✔️: On my Terminal at least.
 
-**Kiosk Settings (PIN-Protected)**:
+**Kiosk Settings (PIN-Protected):**
 
 227. Pass ✔️
 228. Pass ✔️
-229. Pass ✔️ - _NOTE:_ Does not have `Terminal Assignment`. Not implemented.
+229. Pass ✔️: _NOTE_ - Does not have `Terminal Assignment`. Not implemented.
 230. Pass ✔️
 
-**Additional Note**:
+**Additional Notes:**
 
-[Return to Top](#table-of-contents)
+<sub>[Return to Top](#toc)</sub>
 
-## 11 | Connectivity & Resilience
+## 11. Connectivity & Resilience {#connectivity-resilience}
 
-**Network Loss - Full Disconnection**:
+---
+
+**Network Loss - Full Disconnection:**
 
 231. Pass ✔️
-232. Pass ✔️ - Bumps down the UI to make room for it
+232. Pass ✔️: Bumps down the UI to make room for it
 233. Pass ✔️ "Orders are syncing."
 234. Pass ✔️
 
-**Network Present - No BlazeBite Connectivity**:
+**Network Present - No BlazeBite Connectivity:**
 
 235. <a id="fail-235"></a>**Fail** ❌: No banner is present. Silently fails.
 236. **Cannot Test**
 237. **Cannot Test**
 
-**App Lifecycle**:
+**App Lifecycle:**
 
 238. Pass ✔️
 239. Pass ✔️
-240. Pass ✔️ - Tested Passively. Have ongoing test happening right now.
+240. Pass ✔️: Tested Passively. Have ongoing test happening right now.
 241. Pass ✔️
 
-**Multi-Device Consistency**:
+**Multi-Device Consistency:**
 
 242. Pass ✔️
 243. Pass ✔️
 244. Pass ✔️
 
-**Additional Notes**:
+**Additional Notes:**
 
-[Return to Top](#table-of-contents)
+<sub>[Return to Top](#toc)</sub>
 
-## List of Notable Findings
+## List of Notable Findings {#notable-findings}
 
-### Failed Tests
+---
 
-1. [Test 5](#user-content-fail-5)
-2. [Test 9](#user-content-fail-9)
-3. [Test 27](#user-content-fail-27)
-4. [Test 89](#user-content-fail-89)
-5. [Test 101](#user-content-fail-101)
-6. [Test 106](#user-content-fail-106)
-7. [Test 107](#user-content-fail-107)
-8. [Test 114](#user-content-fail-114)
-9. [Test 121](#user-content-fail-121)
-10. [Test 150](#user-content-fail-150)
-11. [Test 154](#user-content-fail-154)
-12. [Test 166](#user-content-fail-166)
-13. [Test 197](#user-content-fail-197)
-14. [Test 207](#user-content-fail-207)
-15. [Test 208](#user-content-fail-208)
-16. [Test 235](#user-content-fail-235)
+### Failed Tests {#failed-tests}
 
-### Semi-Passed/Failed Tests
+1. [Test 5](#fail-5)
+2. [Test 9](#fail-9)
+3. [Test 27](#fail-27)
+4. [Test 89](#fail-89)
+5. [Test 101](#fail-101)
+6. [Test 106](#fail-106)
+7. [Test 107](#fail-107)
+8. [Test 114](#fail-114)
+9. [Test 121](#fail-121)
+10. [Test 150](#fail-150)
+11. [Test 154](#fail-154)
+12. [Test 166](#fail-166)
+13. [Test 197](#fail-197)
+14. [Test 207](#fail-207)
+15. [Test 208](#fail-208)
+16. [Test 235](#fail-235)
 
-1. [Test 6](#user-content-semi-6)
-2. [Test 32](#user-content-semi-32)
-3. [Test 57](#user-content-semi-57)
-4. [Test 67](#user-content-semi-67)
-5. [Test 68](#user-content-semi-68)
-6. [Test 69](#user-content-semi-69)
-7. [Test 132](#user-content-emi-132)
-8. [Test 155](#user-content-semi-155)
-9. [Test 198](#user-content-semi-198)
-10. [Test 209](#user-content-semi-209)
+### Semi-Passed/Failed Tests {#semi-passed-semi-failed-tests}
+
+1. [Test 6](#semi-6)
+2. [Test 32](#semi-32)
+3. [Test 57](#semi-57)
+4. [Test 67](#semi-67)
+5. [Test 68](#semi-68)
+6. [Test 69](#semi-69)
+7. [Test 132](#semi-132)
+8. [Test 155](#semi-155)
+9. [Test 198](#semi-198)
+10. [Test 209](#semi-209)
