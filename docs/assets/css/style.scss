@@ -17,12 +17,15 @@ body {
 .wrapper {
   background: rgba(0, 0, 0, 0.7);
   backdrop-filter: blur(10px);
+  max-width: 1100px;
 }
 
 section {
   background: rgba(10, 10, 10, 0.8);
   border: 1px solid rgba(139, 0, 0, 0.3);
   box-shadow: 0 0 20px rgba(139, 0, 0, 0.2);
+  max-width: 1100px;
+  padding-top: 15px;
 }
 
 /* Top header bar */
@@ -49,6 +52,7 @@ h6 {
 
 #title {
   text-align: center;
+  margin-bottom: 20px !important;
 }
 
 #title h1 {
@@ -108,6 +112,12 @@ table td {
 
 table tr:hover {
   background: rgba(139, 0, 0, 0.1);
+}
+
+/* GitHub markdown content — override embedded GitHub theme colors */
+.markdown-body {
+  background: transparent !important;
+  color: #f0f0f0 !important;
 }
 
 /* Navigation bar */
@@ -183,4 +193,46 @@ textarea:focus {
   border-color: #8b0000;
   box-shadow: 0 0 10px rgba(139, 0, 0, 0.5);
   outline: none;
+}
+
+/* Continuous-numbered ordered lists.
+   Opt-in via `body_class: continuous-list` in page frontmatter.
+   Kramdown emits a fresh <ol> for each bold-paragraph break and never
+   sets `start="N"`, so we replace native list markers with a CSS counter
+   that survives the breaks. Counter activates after the first <hr>
+   (separating TOC from numbered content) and disables again after the
+   "List of Notable Findings" h2 so summary index lists restart at 1. */
+body.continuous-list {
+  section { counter-reset: testcount; }
+
+  hr ~ ol {
+    list-style: none;
+    padding-left: 2.5em;
+
+    > li {
+      counter-increment: testcount;
+      position: relative;
+    }
+
+    > li::before {
+      content: counter(testcount) ".";
+      position: absolute;
+      left: -2.25em;
+      width: 1.75em;
+      text-align: right;
+      color: #ff6666;
+    }
+  }
+
+  h2#list-of-notable-findings ~ ol,
+  h2#list-of-notable-findings ~ * ol {
+    list-style: decimal;
+    padding-left: 2.5em;
+
+    > li {
+      counter-increment: none;
+
+      &::before { content: none; }
+    }
+  }
 }
