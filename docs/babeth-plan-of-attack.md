@@ -8,7 +8,7 @@ permalink: /dove-of-attack/
 tags: [Babeth, dove, quality of life, finally, angy, stupid fucking website, meow, me-ow]
 ---
 
-This is a document outlining the hour I get to spend ~forcing~ hanging out with Babeth and making her life better via tech.
+This is a document outlining the hour I get to spend ~~forcing~~ hanging out with Babeth and making her life better via tech.
 
 ## Attack Vectors
 
@@ -46,11 +46,19 @@ This is a document outlining the hour I get to spend ~forcing~ hanging out with 
         2. Configure Safari Extensions
     3. **DNS Servers**
         1. **QUIC**
-            1. | **Default Server** | Blocks Ads & Trackers | quic://dns.adguard-dns.com |
-            2. | **Non-Filtering Server** | Will not block ads, trackers, or any other DNS requests | quic://unfiltered.adguard-dns.com |
+
+              | Server | Blocking | Address |
+              | --- | --- | --- |
+              | **Default** | Blocks Ads & Trackers | quic://dns.adguard-dns.com |
+              | **Non-Filtering** | Will not block ads, trackers, or any other DNS requests | quic://unfiltered.adguard-dns.com |
+
         2. **HTTPS**
-            1. | **Default Server** | Blocks Ads & Trackers | https://dns.adguard-dns.com/dns-query |
-            2. | **Non-Filtering Server** | Will not block ads, trackers, or any other DNS requests | https://unfiltered.adguard-dns.com/dns-query |
+
+              | Server | Blocking | Address |
+              | --- | --- | --- |
+              | **Default** | Blocks Ads & Trackers | <https://dns.adguard-dns.com/dns-query> |
+              | **Non-Filtering** | Will not block ads, trackers, or any other DNS requests | <https://unfiltered.adguard-dns.com/dns-query> |
+
 3. **Privacy Overhaul:**
     1. Go over privacy/data retention for:
         1. Google
