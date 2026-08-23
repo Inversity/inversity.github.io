@@ -1,11 +1,15 @@
 {
   "name": "sharex-gallery",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Cloudflare Worker for ShareX R2 bucket gallery",
   "main": "src/index.js",
+  "type": "module",
   "scripts": {
     "dev": "wrangler dev",
-    "deploy": "wrangler deploy"
+    "dev:live": "wrangler dev -e live",
+    "deploy": "wrangler deploy",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "keywords": [
     "cloudflare",
@@ -17,6 +21,8 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
+    "@cloudflare/vitest-pool-workers": "^0.22.0",
+    "vitest": "^4.1.0",
     "wrangler": "^4.51.0"
   }
 }

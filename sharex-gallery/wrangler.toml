@@ -3,11 +3,61 @@ main = "src/index.js"
 compatibility_date = "2025-12-01"
 account_id = "85511ece0bc24640e085eba401fc9893"
 
-# R2 bucket binding
+# ---------------------------------------------------------------------------
+# Default environment. This is what `wrangler deploy` ships.
+#
+# `wrangler dev` with this config runs fully local: R2 is simulated in
+# .wrangler/state and the preview bucket is used, so nothing you click can
+# touch real uploads.
+# ---------------------------------------------------------------------------
+
 [[r2_buckets]]
 binding = "BUCKET"
 bucket_name = "sharex-storage"
 preview_bucket_name = "sharex-storage-preview"
+
+# Used to build thumbnails from R2 bytes directly. Results are cached back into
+# R2 under _thumbs/, so each image is transformed once for its lifetime rather
+# than once per request.
+[images]
+binding = "IMAGES"
+
+# Import the stylesheet and client script as strings so they can live in real
+# .css / .js files instead of template literals. Custom rules take precedence
+# over Wrangler's default "**/*.js" ESModule rule.
+[[rules]]
+type = "Text"
+globs = ["**/*.css", "**/*.client.js"]
+fallthrough = true
+
+# ---------------------------------------------------------------------------
+# `live` environment: for LOCAL DEVELOPMENT AGAINST REAL DATA ONLY.
+#
+#   npm run dev:live      code runs locally, R2 calls proxy to the real bucket
+#
+# Do NOT deploy this environment. `wrangler deploy -e live` would publish a
+# separate Worker named "sharex-gallery-live". Production uses the default
+# environment above, where bindings are real by definition.
+#
+# Two consequences of pointing dev at live data:
+#   - the delete and rename buttons operate on real uploads
+#   - browsing writes real thumbnails into _thumbs/, which pre-warms the cache
+# ---------------------------------------------------------------------------
+
+[env.live]
+
+[[env.live.r2_buckets]]
+binding = "BUCKET"
+bucket_name = "sharex-storage"
+remote = true
+
+[env.live.images]
+binding = "IMAGES"
+
+[[env.live.rules]]
+type = "Text"
+globs = ["**/*.css", "**/*.client.js"]
+fallthrough = true
 
 # Route configuration for custom domain
 # After deploying, you'll need to add a route in the Cloudflare dashboard or set up a custom domain
