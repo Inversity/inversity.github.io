@@ -215,8 +215,20 @@ an `overflow: hidden` container is what actually makes tiles uniform.
 
 The Worker performs no authentication of its own. `DELETE` and `PATCH` on any
 path succeed for anyone who can reach the hostname, and Cloudflare Access is the
-only control in front of it. This is a real exposure and a separate piece of
-work. It is not addressed here.
+only control in front of it. Giving the Worker its own auth is a separate piece
+of work and is not addressed here.
+
+### One exception, fixed at deploy time
+
+Access protects `sharex.inversity.dev` only. The workers.dev subdomain routed to
+the same Worker with nothing in front of it. Confirmed on deploy:
+`sharex-gallery.inversity.workers.dev/api/list` returned all 661 filenames to an
+unauthenticated request, and the same origin would have accepted `DELETE` on any
+key.
+
+Fixed with `workers_dev = false`, which is now load-bearing rather than
+cosmetic. The subdomain returns 404. This was pre-existing rather than
+introduced by this work, but it was live and one line to close.
 
 ## Deployment
 

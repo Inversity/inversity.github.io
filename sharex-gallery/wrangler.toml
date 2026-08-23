@@ -3,6 +3,14 @@ main = "src/index.js"
 compatibility_date = "2025-12-01"
 account_id = "85511ece0bc24640e085eba401fc9893"
 
+# Cloudflare Access protects sharex.inversity.dev, but it does NOT protect the
+# workers.dev subdomain, which routes to the same Worker. Left enabled,
+# sharex-gallery.inversity.workers.dev serves the full file manifest to anyone
+# and accepts unauthenticated DELETE on any key.
+#
+# The Worker performs no authentication of its own, so this must stay false.
+workers_dev = false
+
 # ---------------------------------------------------------------------------
 # Default environment. This is what `wrangler deploy` ships.
 #
@@ -45,6 +53,7 @@ fallthrough = true
 # ---------------------------------------------------------------------------
 
 [env.live]
+workers_dev = false
 
 [[env.live.r2_buckets]]
 binding = "BUCKET"

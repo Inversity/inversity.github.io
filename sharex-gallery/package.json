@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "wrangler dev",
     "dev:live": "wrangler dev -e live",
-    "deploy": "wrangler deploy",
+    "deploy": "wrangler deploy --env=\"\"",
     "test": "vitest run",
     "test:watch": "vitest"
   },

@@ -16,7 +16,7 @@ R2 bucket.
   the original in a new tab
 - **Silent video tiles** - nothing is downloaded until a video is opened
 - **Copy, rename, delete** - inline, without reloading the page
-- **Zero Trust** - protected by Cloudflare Access
+- **Zero Trust** - protected by Cloudflare Access (see Security below)
 
 ## Infrastructure
 
@@ -117,6 +117,22 @@ environment uses.
 `wrangler r2 object put --local` writes to a different local store layout than
 `wrangler dev` reads from, so objects seeded that way are invisible to the dev
 server. Use `npm run dev:live` instead of trying to seed local data.
+
+## Security
+
+The Worker performs **no authentication of its own**. `DELETE` and `PATCH` on any
+key succeed for anyone who can reach the hostname. Cloudflare Access on
+`sharex.inversity.dev` is the only control in front of it.
+
+That makes `workers_dev = false` load-bearing, not cosmetic. Access protects the
+custom domain only. With the workers.dev subdomain enabled,
+`sharex-gallery.inversity.workers.dev` routed to the same Worker with no Access
+in front, serving the full file manifest to unauthenticated requests and
+accepting `DELETE` on any key. Verified on 2026-08-23: it returned all 661
+filenames to an anonymous request. It now returns 404.
+
+Do not re-enable `workers_dev` or `preview_urls` unless the Worker gains its own
+authentication first.
 
 ## Deployment
 
